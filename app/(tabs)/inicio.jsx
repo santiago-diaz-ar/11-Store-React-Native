@@ -2,6 +2,7 @@ import { View, Text, StyleSheet, ScrollView, Image } from "react-native";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { FlatList } from "react-native-gesture-handler";
+const apiUrl = process.env.EXPO_PUBLIC_API_URL;
 
 const Inicio = () => {
   const [datos, setDatos] = useState([]);
@@ -10,12 +11,11 @@ const Inicio = () => {
   const productosApi = async () => {
     setLoading(true);
     try {
-      const getLlamado = await axios.get(
-        "https://back-end-paola.onrender.com/products"
-      );
-      const result = getLlamado?.data;
+      const getLlamado = await axios.get(apiUrl);
+      const result = getLlamado.data;
 
       if (result) {
+        console.log(apiUrl, "ACA");
         setDatos(result);
         setLoading(false);
       }
@@ -37,19 +37,17 @@ const Inicio = () => {
           keyExtractor={(item) => item.id.toString()}
           data={datos}
           renderItem={({ item }) => (
-            <ScrollView>
-              <View style={styles.cajas}>
-                <Text style={styles.title}>{item.name}</Text>
+            <View style={styles.cajas}>
+              <Text style={styles.title}>{item.name}</Text>
 
-                <View style={styles.containerimgen}>
-                  <Image
-                    style={styles.imgen}
-                    source={item.image}
-                    resizeMode="stretch"
-                  />
-                </View>
+              <View style={styles.containerimgen}>
+                <Image
+                  style={styles.imgen}
+                  source={{ uri: item.image }}
+                  resizeMode="stretch"
+                />
               </View>
-            </ScrollView>
+            </View>
           )}
         />
       )}

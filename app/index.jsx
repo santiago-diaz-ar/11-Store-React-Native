@@ -8,7 +8,7 @@ export default function Logueo() {
   const [contrasena, setContrasena] = useState("");
 
   const enviarFormulario = () => {
-    navigation.push("home");
+    navigation.push("inicio");
   };
 
   return (

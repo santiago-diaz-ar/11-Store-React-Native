@@ -8,7 +8,11 @@ export default function Logueo() {
   const [contrasena, setContrasena] = useState("");
 
   const enviarFormulario = () => {
-    navigation.push("inicio");
+    navigation.replace("inicio");
+  };
+
+  const crearUser = () => {
+    navigation.push("new");
   };
 
   return (
@@ -29,11 +33,17 @@ export default function Logueo() {
         secureTextEntry
       />
       <Button title="Enviar" onPress={enviarFormulario} />
+      <View style={styles.new}>
+        <Button title="Crear Usuario" onPress={crearUser} />
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  new: {
+    marginTop: 15,
+  },
   container: {
     flex: 1,
     justifyContent: "center",

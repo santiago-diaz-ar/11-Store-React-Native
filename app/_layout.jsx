@@ -4,7 +4,7 @@ const StackLayout = () => {
   return (
     <Stack>
       <Stack name="inicio" />
-      <Stack name="videos" />
+      <Stack name="new" />
     </Stack>
   );
 };

@@ -15,12 +15,11 @@ const Inicio = () => {
       const result = getLlamado.data;
 
       if (result) {
-        console.log(apiUrl, "ACA");
         setDatos(result);
         setLoading(false);
       }
     } catch (error) {
-      return error.message;
+      console.error(error);
     }
   };
 
@@ -30,6 +29,7 @@ const Inicio = () => {
 
   return (
     <View style={styles.containetOne}>
+      <Text style={styles.titleProducts}>Productos</Text>
       {loading ? (
         <Text>Cargando...</Text>
       ) : (
@@ -47,6 +47,7 @@ const Inicio = () => {
                   resizeMode="stretch"
                 />
               </View>
+              <Text>Añadir a Compras</Text>
             </View>
           )}
         />
@@ -58,7 +59,7 @@ const Inicio = () => {
 const styles = StyleSheet.create({
   containerimgen: {
     width: "100%",
-    height: "90%",
+    height: "75%",
   },
   imgen: {
     borderWidth: 3,
@@ -66,6 +67,10 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     borderRadius: 5,
+  },
+  titleProducts: {
+    padding: 1,
+    marginTop: 5,
   },
   title: {
     height: "100%",
@@ -81,10 +86,11 @@ const styles = StyleSheet.create({
     fontSize: 10,
     padding: 10,
     width: 250,
-    height: 230,
+    height: 280,
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 5,
+    overflow: "hidden",
   },
 });
 export default Inicio;

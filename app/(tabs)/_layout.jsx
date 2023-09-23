@@ -6,6 +6,7 @@ export default () => {
       <Tabs.Screen name="inicio" />
       <Tabs.Screen name="videos" />
       <Tabs.Screen name="usuario" />
+      <Tabs.Screen name="store" />
     </Tabs>
   );
 };
